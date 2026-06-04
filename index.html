@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expense Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- ── HEADER ──────────────────────────────────────────── -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">◈</span>
+        <span>ExpenseFlow</span>
+      </div>
+    </header>
+
+    <!-- ── BALANCE CARDS ────────────────────────────────────── -->
+    <section class="summary">
+      <div class="card card--balance">
+        <p class="card-label">Net Balance</p>
+        <h2 class="card-value" id="balance">₹0.00</h2>
+      </div>
+      <div class="card card--income">
+        <p class="card-label">↑ Total Income</p>
+        <h2 class="card-value" id="income">₹0.00</h2>
+      </div>
+      <div class="card card--expense">
+        <p class="card-label">↓ Total Expense</p>
+        <h2 class="card-value" id="expenseTotal">₹0.00</h2>
+      </div>
+    </section>
+
+    <div class="main">
+
+      <!-- ── ADD FORM ────────────────────────────────────────── -->
+      <aside class="form-panel">
+        <h3 class="panel-title">Add Transaction</h3>
+
+        <div class="field">
+          <label>Title</label>
+          <input id="title" type="text" placeholder="e.g. Salary, Grocery…" maxlength="100" />
+        </div>
+
+        <div class="field">
+          <label>Amount (₹)</label>
+          <input id="amount" type="number" placeholder="0.00" min="0.01" step="0.01" />
+        </div>
+
+        <div class="field">
+          <label>Type</label>
+          <div class="toggle-group">
+            <button class="toggle active" data-type="income">Income</button>
+            <button class="toggle" data-type="expense">Expense</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Category</label>
+          <select id="category">
+            <option value="">Select category</option>
+            <optgroup label="Income">
+              <option>Salary</option>
+              <option>Freelance</option>
+              <option>Investment</option>
+              <option>Gift</option>
+              <option>Other Income</option>
+            </optgroup>
+            <optgroup label="Expense">
+              <option>Food</option>
+              <option>Rent</option>
+              <option>Transport</option>
+              <option>Shopping</option>
+              <option>Health</option>
+              <option>Utilities</option>
+              <option>Entertainment</option>
+              <option>Education</option>
+              <option>Other Expense</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Note <span class="optional">(optional)</span></label>
+          <input id="note" type="text" placeholder="Short note…" maxlength="255" />
+        </div>
+
+        <button class="btn-add" id="addBtn">Add Transaction</button>
+        <p class="form-msg" id="formMsg"></p>
+      </aside>
+
+      <!-- ── TRANSACTION LIST ────────────────────────────────── -->
+      <section class="list-panel">
+        <div class="list-header">
+          <h3 class="panel-title">Transactions</h3>
+          <div class="filter-row">
+            <button class="filter active" data-filter="all">All</button>
+            <button class="filter" data-filter="income">Income</button>
+            <button class="filter" data-filter="expense">Expense</button>
+          </div>
+        </div>
+
+        <ul class="tx-list" id="txList">
+          <li class="empty-state" id="emptyState">No transactions yet</li>
+        </ul>
+      </section>
+
+    </div><!-- /main -->
+  </div><!-- /app -->
+
+  <script src="app.js"></script>
+</body>
+</html>
